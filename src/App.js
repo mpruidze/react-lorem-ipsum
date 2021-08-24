@@ -7,22 +7,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let amount = parseInt(count); //because typeof(count) is a string
+    let amount = parseInt(count); // because typeof(count) is a string
 
     // 1st solution
     const newData = data.filter((item, index) => {
-      if (amount > 0) {
-        return index <= amount - 1
-      } else {
-        return index == 0
-      }
-
+      if (amount > 0) return index <= amount - 1;
+      else return index == 0;
     });
     setText(newData);
 
     // 2nd solution
-    // setText(data.slice(0,amount))
-
+    // if(count <= 0) amount = 1;
+    // if(count > data.length) amount = data.length;
+    // setText(data.slice(0,amount));
   }
 
   return (
