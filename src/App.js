@@ -7,7 +7,22 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('hello world');
+    let amount = parseInt(count); //because typeof(count) is a string
+
+    // 1st solution
+    const newData = data.filter((item, index) => {
+      if (amount > 0) {
+        return index <= amount - 1
+      } else {
+        return index == 0
+      }
+
+    });
+    setText(newData);
+
+    // 2nd solution
+    // setText(data.slice(0,amount))
+
   }
 
   return (
@@ -22,13 +37,13 @@ function App() {
         />
         <button type='submit' className="btn">generate</button>
       </form>
-      {text.map((item, index) => {
-        return (
-          <article>
-            <p>{item}</p>
-          </article>
-        )
-      })}
+      <article className='lorem-text'>
+        {text.map((item, index) => {
+          return (
+            <p key={index} >{item}</p>
+          )
+        })}
+      </article>
     </section>
   )
 
